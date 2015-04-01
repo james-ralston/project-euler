@@ -1,5 +1,5 @@
-module SolutionsTo20 
-( solutionsTo20 
+module SolutionsTo50 
+( solutionsTo50 
 ) where
 
 
@@ -11,13 +11,13 @@ import Util.Misc (isPalindromic)
 import Data.Char
 
 
-solutionsTo20 :: Int -> IO ()
-solutionsTo20 n = do 
+solutionsTo50 :: Int -> IO ()
+solutionsTo50 n = do 
   putStr $ "The solution to problem " ++ show n ++ " is "
-  solutionsTo20_ n
+  solutionsTo50_ n
 
-solutionsTo20_ :: Int -> IO ()
-solutionsTo20_ n 
+solutionsTo50_ :: Int -> IO ()
+solutionsTo50_ n 
   | n == 1 = solution1
   | n == 2 = solution2
   | n == 3 = solution3

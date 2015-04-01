@@ -11,21 +11,22 @@ homepage: https://github.com/jpralston/ProjectEuler
 bug-reports: mailto:jpralston@gmail.com
 synopsis: haskell implementation of Project Euler solutions
 description: yo
-category: Console, Text
+category: Console
 author: James Ralston
 data-dir: ""
- 
-flag threaded
-    Default: False
+
  
 executable ProjectEuler
-    build-depends: base >=4.2 && <5
-     
-    if flag(threaded)
-        buildable: True
-        ghc-options: -threaded
-    main-is: ProjectEuler.hs
-    buildable: True
-    hs-source-dirs: src
+  build-depends: 
+    base >=4.2 && <5
+    , primes >= 0.2
+    , parallel >= 3.2
+  
+  ghc-options: 
+    -O
+      
+  main-is: ProjectEuler.hs
+  buildable: True
+  hs-source-dirs: src
  
  

@@ -1,0 +1,57 @@
+	Thu Mar 26 19:20 2015 Time and Allocation Profiling Report  (Final)
+
+	   ProjectEuler.exe +RTS -p -RTS
+
+	total time  =        0.63 secs   (627 ticks @ 1000 us, 1 processor)
+	total alloc = 682,455,104 bytes  (excludes profiling overheads)
+
+COST CENTRE                MODULE           %time %alloc
+
+solution58.answer.func.foo Solutions51To100  98.1   98.1
+solution58.answer.func     Solutions51To100   0.6    1.1
+
+
+                                                                                 individual     inherited
+COST CENTRE                         MODULE                     no.     entries  %time %alloc   %time %alloc
+
+MAIN                                MAIN                        54           0    0.0    0.0   100.0  100.0
+ main                               Main                       109           0    0.0    0.0     0.0    0.0
+  solve                             Main                       117           1    0.0    0.0     0.0    0.0
+   solutions51To100                 Solutions51To100           118           1    0.0    0.0     0.0    0.0
+  main.number                       Main                       111           1    0.0    0.0     0.0    0.0
+   main.checkNumber                 Main                       112           1    0.0    0.0     0.0    0.0
+    main.checkNumber.num'           Main                       113           1    0.0    0.0     0.0    0.0
+  time                              Util.Time                  110           1    0.0    0.0     0.0    0.0
+   time.diff                        Util.Time                  134           1    0.0    0.0     0.0    0.0
+   solve                            Main                       119           0    0.0    0.0     0.0    0.0
+    solutions51To100                Solutions51To100           120           0    0.0    0.0     0.0    0.0
+     solution58                     Solutions51To100           124           0    0.0    0.0     0.0    0.0
+     solutions51To100_              Solutions51To100           122           1    0.0    0.0     0.0    0.0
+ CAF                                GHC.Float                   94           0    0.0    0.0     0.0    0.0
+ CAF                                GHC.IO.Encoding.CodePage    92           0    0.0    0.0     0.0    0.0
+ CAF                                Text.Read.Lex               86           0    0.0    0.0     0.0    0.0
+ CAF                                GHC.IO.Encoding             84           0    0.0    0.0     0.0    0.0
+ CAF                                GHC.Conc.Windows            82           0    0.0    0.0     0.0    0.0
+ CAF                                System.CPUTime              80           0    0.0    0.0     0.0    0.0
+ CAF                                Text.Printf                 79           0    0.0    0.0     0.0    0.0
+ CAF                                GHC.IO.Handle.FD            70           0    0.2    0.0     0.2    0.0
+ CAF                                Data.Numbers.Primes         67           0    0.8    0.6     0.8    0.6
+ CAF                                Util.Time                   64           0    0.0    0.0     0.0    0.0
+  time                              Util.Time                  133           0    0.0    0.0     0.0    0.0
+   time.diff                        Util.Time                  135           0    0.0    0.0     0.0    0.0
+ CAF                                Solutions51To100            63           0    0.0    0.0    99.0   99.4
+  solution58                        Solutions51To100           123           1    0.0    0.0    99.0   99.4
+   solution58.answer                Solutions51To100           125           1    0.0    0.0    99.0   99.4
+    solution58.answer.lol           Solutions51To100           127       13120    0.2    0.0     0.2    0.0
+     solution58.answer.lol.ff       Solutions51To100           128       13120    0.0    0.0     0.0    0.0
+    solution58.answer.func          Solutions51To100           126           1    0.6    1.1    98.9   99.4
+     solution58.answer.func.\       Solutions51To100           132       13119    0.0    0.0     0.0    0.0
+     solution58.answer.func.\       Solutions51To100           129       13120    0.2    0.0    98.2   98.3
+      solution58.answer.func.foo    Solutions51To100           130       13120   98.1   98.1    98.1   98.3
+       solution58.answer.func.foo.\ Solutions51To100           131       39360    0.0    0.2     0.0    0.2
+  solutions51To100                  Solutions51To100           121           0    0.0    0.0     0.0    0.0
+ CAF                                Main                        61           0    0.0    0.0     0.0    0.0
+  main.number                       Main                       114           0    0.0    0.0     0.0    0.0
+   main.checkNumber                 Main                       115           0    0.0    0.0     0.0    0.0
+    main.checkNumber.num'           Main                       116           0    0.0    0.0     0.0    0.0
+  main                              Main                       108           1    0.0    0.0     0.0    0.0

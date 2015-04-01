@@ -18,8 +18,8 @@ import System.IO
 import Data.List
 import Control.Applicative
 import Util.Time
-import SolutionsTo20 
-
+import SolutionsTo50
+import Solutions51To100
 
 main = do
   putStrLn "For which problem would you like to see the solution?"
@@ -33,7 +33,8 @@ main = do
 
 solve Nothing = print "You have not entered a readable number"
 solve (Just x) 
-  | x < 20 =  solutionsTo20 x 
+  | x < 50 =  solutionsTo50 x 
+  | x < 400 = solutions51To100 x
 solve _ =  print "solution not present in program"
 
 
