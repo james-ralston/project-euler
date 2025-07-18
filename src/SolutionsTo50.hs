@@ -52,19 +52,12 @@ solution5 = foldr1 lcm [1..20]
   
 solution6 :: Integer
 solution6 = sumSquare - squareSums
-  where squareSums =  foldl (\s i-> s + i^2) 0 [1..100]
+  where squareSums = sum $ map (^2) [1..100]
         sumSquare = (^2) $ sum [1..100]
                 
 solution8 :: Integer
-solution8 = getAdjacentSums digitArr 13
-  where getAdjacentSums [] _ = 0
-        getAdjacentSums xss@(x:xs) y
-          | len < y = 0
-          | len == y = product xss      
-          | otherwise = max adjSum $ getAdjacentSums xs y
-          where len = length xss
-                adjSum = product $ take y xss
-        digitArr = map digitToInt digitString
+solution8 = maximum . map product . takeWhile (\l -> length l >= 13) . map (take 13) . tails $ digitArr
+  where digitArr = map digitToInt digitString
 
 solution13 = do
   numbers <- fmap ( map read . lines ) (readFile "p13numbers.txt")                
