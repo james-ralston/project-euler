@@ -17,54 +17,47 @@ solutionsTo50 n = do
   solutionsTo50_ n
 
 solutionsTo50_ :: Int -> IO ()
-solutionsTo50_ n 
-  | n == 1 = solution1
-  | n == 2 = solution2
-  | n == 3 = solution3
-  | n == 4 = solution4
-  | n == 5 = solution5
-  | n == 6 = solution6
-  | n == 8 = solution8
-  | n == 13 = solution13
-  | n == 18 = solution18
-  | otherwise = print "solution not present in program"
+solutionsTo50_ n = case n of
+    1  -> print solution1
+    2  -> print solution2
+    3  -> print solution3
+    4  -> print solution4
+    5  -> print solution5
+    6  -> print solution6
+    8  -> print solution8
+    13 -> solution13
+    18 -> solution18
+    _  -> putStrLn "Solution not present in program"
 
-solution1 = putStrLn $ show answer
-  where answer = sum $ union [3,6..999] [5,10..999]
+solution1 :: Integer
+solution1 = sum $ union [3,6..999] [5,10..999]
     
-solution2 = putStrLn $ show answer
-  where answer = sum . filter even $ takeWhile (<= 4000000) fibs
+solution2 :: Integer
+solution2 = sum . filter even $ takeWhile (<= 4000000) fibs
   
-solution3 = putStrLn $ show answer
-  where answer =  let primes = 2 : filter (null . tail . primeFactors) [3,5..]
-                      primeFactors n = factor n primes
-                        where factor n (p:ps) 
-                                | p*p > n        = [n]
-                                | n `mod` p == 0 = p : factor (n `div` p) (p:ps)
-                                | otherwise      =     factor n ps
-                  in  maximum $ primeFactors 600851475143
+solution3 :: Integer
+solution3 = let primes = 2 : filter (null . tail . primeFactors) [3,5..]
+                primeFactors n = factor n primes
+                  where factor n (p:ps) 
+                          | p*p > n        = [n]
+                          | n `mod` p == 0 = p : factor (n `div` p) (p:ps)
+                          | otherwise      =     factor n ps
+            in  maximum $ primeFactors 600851475143
                   
-solution4 = putStrLn $ show answer
-  where answer = maximum [x | y<-[999,998..100], z<-[999,998..y], let x = y*z, isPalindromic x]
+solution4 :: Integer
+solution4 = maximum [x | y<-[999,998..100], z<-[999,998..y], let x = y*z, isPalindromic x]
 
-solution5 = putStrLn $ show answer
-  where answer = foldr1 lcm [1..20]
+solution5 :: Integer
+solution5 = foldr1 lcm [1..20]
   
-solution6 = putStrLn $ show answer
-  where answer = sumSquare - squareSums
-          where squareSums =  foldl (\s i-> s + i^2) 0 [1..100]
-                sumSquare = (^2) $ sum [1..100]
+solution6 :: Integer
+solution6 = sumSquare - squareSums
+  where squareSums = sum $ map (^2) [1..100]
+        sumSquare = (^2) $ sum [1..100]
                 
-solution8 = putStrLn $ show answer 
-  where answer = getAdjacentSums digitArr 13
-          where getAdjacentSums [] _ = 0
-                getAdjacentSums xss@(x:xs) y
-                  | len < y = 0
-                  | len == y = product xss      
-                  | otherwise = max adjSum $ getAdjacentSums xs y
-                  where len = length xss
-                        adjSum = product $ take y xss
-                digitArr = map digitToInt digitString
+solution8 :: Integer
+solution8 = maximum . map product . takeWhile (\l -> length l >= 13) . map (take 13) . tails $ digitArr
+  where digitArr = map digitToInt digitString
 
 solution13 = do
   numbers <- fmap ( map read . lines ) (readFile "p13numbers.txt")                
